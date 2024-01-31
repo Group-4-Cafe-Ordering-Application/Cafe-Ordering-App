@@ -3,8 +3,8 @@ import Layout from "../components/Layout";
 
 function MainPage() {
   return (
-    <Layout title="Cafe Home Page">
-      <div>MainPage</div>
+    <Layout title="Cafe Cart">
+      <div>View Cart here</div>
     </Layout>
   );
 }
