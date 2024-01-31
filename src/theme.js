@@ -1,4 +1,4 @@
-import { indigo, yellow, blue, grey, purple } from "@mui/material/colors";
+import { grey, orange, red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const defaultTheme = createTheme({
@@ -8,14 +8,14 @@ export const defaultTheme = createTheme({
     textColor: "#000",
     shadowColor: "shadow-gray-500",
     primary: {
-      main: indigo[800],
-      light: blue[400],
+      main: grey[700],
+      light: grey[400],
       text: "#000",
     },
     secondary: {
-      main: yellow[400],
-      hover: yellow[200],
-      text: indigo[800],
+      main: "#2E2A26",
+      hover: orange[200],
+      text: red[800],
     },
   },
 });
@@ -28,12 +28,12 @@ export const darkTheme = createTheme({
     divider: "",
     primary: {
       main: grey[900],
-      light: purple[400],
+      light: orange[400],
       text: "#FFF",
     },
     secondary: {
-      main: yellow[500],
-      hover: yellow[200],
+      main: "#8A613A",
+      hover: orange[200],
       text: grey[900],
     },
   },
