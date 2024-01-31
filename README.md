@@ -1,3 +1,25 @@
+# For Developers only
+
+First time:
+
+Run the following command to clone the repo (copy and paste https or ssh)
+
+### `git clone https:...`
+
+Move into the new project directory
+
+### `cd cafe-ordering-app`
+
+Install dependencies (best to do this after every pull)
+
+### `npm install` or if on mac `yarn install`
+
+In the project directory (cafe-ordering-app), to run the project locally:
+
+- this will bring up a browser window with the app running on `http://localhost:3000`
+
+### `npm start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
