@@ -2,7 +2,7 @@
 
 First time:
 
-**Step 1:**
+**Step 1:**<br>
 Open a command terminal and navigate to the directory where you want to keep the project.
 
 Run the following command to clone the repo (copy and paste https or ssh from GitHub)
@@ -11,7 +11,7 @@ Run the following command to clone the repo (copy and paste https or ssh from Gi
 
 Note: Do not close the terminal yet, you will be using after step 2.
 
-**Step 2:**
+**Step 2:**<br>
 Inside of your file explorer, you will need to navigate to the project directory called `cafe-ordering-app`.
 
 Create a new file named `.env`
@@ -22,7 +22,7 @@ Save and exit the file.
 
 Note: `envFile.txt` will be given in the Microsoft Teams Chat under `Files`. This file should not be uploaded to GitHub or any other site since it contains our API keys. If someone else gets this they could use our API keys to access our database.
 
-**Step 3:**
+**Step 3:**<br>
 Inside the command terminal, navigate to the project directory.
 
 ### `cd cafe-ordering-app`
@@ -33,7 +33,7 @@ Install dependencies
 
 Note: It is best practice to run this command after every pull, due to updates that may have been made to the package.json file. You must be in the project directory `cafe-ordering-app` for this to work correctly.
 
-**Step 4:**
+**Step 4:**<br>
 In the project directory `cafe-ordering-app`, to run the project locally:
 
 ### `npm start`
