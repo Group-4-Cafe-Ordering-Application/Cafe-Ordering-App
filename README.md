@@ -14,8 +14,6 @@ Note: Do not close the terminal yet, you will be using after step 2.
 **Step 2:**
 Inside of your file explorer, you will need to navigate to the project directory called `cafe-ordering-app`.
 
-Proceed into the directory called `src`
-
 Create a new file named `.env`
 
 Copy and paste the contents of the `envFile.txt` file into the `.env` file.
