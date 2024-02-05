@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/Layout";
-import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 function Profile() {
+  const { logout } = useContext(AuthContext);
   return (
     <Layout title="Cafe Profile">
       <div>Edit Profile here</div>
 
-      {/* temp: will be event handler to handle logout */}
-      <Link to="/">Logout</Link>
+      <button onClick={logout}>Logout</button>
     </Layout>
   );
 }
