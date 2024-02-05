@@ -2,23 +2,45 @@
 
 First time:
 
-Run the following command to clone the repo (copy and paste https or ssh)
+**Step 1:**
+Open a command terminal and navigate to the directory where you want to keep the project.
+
+Run the following command to clone the repo (copy and paste https or ssh from GitHub)
 
 ### `git clone https:...`
 
-Move into the new project directory
+Note: Do not close the terminal yet, you will be using after step 2.
+
+**Step 2:**
+Inside of your file explorer, you will need to navigate to the project directory called `cafe-ordering-app`.
+
+Proceed into the directory called `src`
+
+Create a new file named `.env`
+
+Copy and paste the contents of the `envFile.txt` file into the `.env` file.
+
+Save and exit the file.
+
+Note: `envFile.txt` will be given in the Microsoft Teams Chat under `Files`. This file should not be uploaded to GitHub or any other site since it contains our API keys. If someone else gets this they could use our API keys to access our database.
+
+**Step 3:**
+Inside the command terminal, navigate to the project directory.
 
 ### `cd cafe-ordering-app`
 
-Install dependencies (best to do this after every pull)
+Install dependencies
 
 ### `npm install` or if on mac `yarn install`
 
-In the project directory (cafe-ordering-app), to run the project locally:
+Note: It is best practice to run this command after every pull, due to updates that may have been made to the package.json file. You must be in the project directory `cafe-ordering-app` for this to work correctly.
 
-- this will bring up a browser window with the app running on `http://localhost:3000`
+**Step 4:**
+In the project directory `cafe-ordering-app`, to run the project locally:
 
 ### `npm start`
+
+Note: this will bring up a browser window with the app running on `http://localhost:3000`. You must be in the project directory `cafe-ordering-app` for this to work correctly.
 
 # Getting Started with Create React App
 
