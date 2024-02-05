@@ -80,7 +80,7 @@ const Header = () => {
   const large = useMemo(
     () => (
       <Navbar>
-        <NavItem href="/home" text="Home" icon={<HomeSVG />} />
+        <NavItem href="/" text="Home" icon={<HomeSVG />} />
         <NavItem href="/cart" text="Cart" icon={<CartSVG />} />
         <NavItem href="/profile" text="Profile" icon={<ProfileSVG />} />
         <NavItem href="/rewards" text="Rewards" icon={<PresentSVG />} />
@@ -125,7 +125,7 @@ const Header = () => {
       className="flex justify-between px-2 "
       style={{ backgroundColor: theme.palette.primary.main }}
     >
-      <Link to="/home">
+      <Link to="/">
         <div className="flex">
           <img src={logo} alt="Logo" className="h-24 w-auto pl-1" />{" "}
           {/* need to adjust height and change the logo to w/o the word */}
