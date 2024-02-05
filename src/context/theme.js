@@ -16,6 +16,7 @@ export const defaultTheme = createTheme({
       main: "#2E2A26",
       hover: orange[200],
       text: red[800],
+      buttonText: "#C24700",
     },
   },
 });
@@ -25,16 +26,16 @@ export const darkTheme = createTheme({
     type: "dark",
     backgroundColor: grey[800],
     shadowColor: "shadow-gray-900",
-    divider: "",
     primary: {
       main: grey[900],
       light: orange[400],
       text: "#FFF",
     },
     secondary: {
-      main: "#8A613A",
+      main: "#C24700",
       hover: orange[200],
       text: grey[900],
+      buttonText: "#000",
     },
   },
 });

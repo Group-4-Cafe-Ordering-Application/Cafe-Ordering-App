@@ -6,7 +6,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
-import { useThemeContext } from "./themeContext";
+import { useThemeContext } from "../context/themeContext";
 
 function MobileMenu() {
   const theme = useTheme();
@@ -80,7 +80,7 @@ function MobileMenu() {
         ref={mainMenuRef}
       >
         <div className="menu">
-          <DropdownItem href="/home">Home</DropdownItem>
+          <DropdownItem href="/">Home</DropdownItem>
           <DropdownItem href="/Cart">Cart</DropdownItem>
           <DropdownItem href="/profile">Profile</DropdownItem>
           <DropdownItem href="/rewards">Rewards</DropdownItem>
@@ -91,7 +91,6 @@ function MobileMenu() {
           >
             Theme
           </DropdownItem>
-          <DropdownItem href="/">Logout</DropdownItem>
         </div>
       </ForwardedCSSTransition>
 

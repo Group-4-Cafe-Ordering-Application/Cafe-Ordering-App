@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { Helmet } from "react-helmet";
 import { Container } from "@mui/material";
-import "./Layout.css";
+import "./Loading.css";
 import { useTheme } from "@emotion/react";
 import "../index.css";
 
@@ -46,7 +46,7 @@ const Layout = ({ title, header, footer, children }) => {
       >
         {isLoading ? (
           <div className="flex items-center">
-            <div class="lds-ring">
+            <div className="lds-ring">
               <div></div>
               <div></div>
               <div></div>

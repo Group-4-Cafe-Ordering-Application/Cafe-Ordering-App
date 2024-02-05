@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useThemeContext } from "./themeContext";
+import { useThemeContext } from "../context/themeContext";
 import styled from "@emotion/styled";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import DarkModeIcon from "@mui/icons-material/DarkMode";

@@ -26,11 +26,11 @@ const ProfileSVG = ({ isMenuStyle }) => {
           viewBox="0 0 20 20"
           xmlSpace="preserve"
         >
-          <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+          <g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
             <g
               id="Dribbble-Light-Preview"
               transform="translate(-380.000000, -2119.000000)"
-              fill={theme.palette.secondary.text}
+              fill={theme.palette.secondary.buttonText}
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path
