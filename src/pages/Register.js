@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useTheme } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import { FIREBASE_AUTH } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AuthContext } from "../context/authContext";
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [inputType, setInputType] = useState("password");
   const [error, setError] = useState("");
   const { login } = useContext(AuthContext);
@@ -33,27 +34,37 @@ function Login() {
     setUserPassword(event.target.value);
   };
 
+  const handleConfirm = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
   const toggleInputType = () => {
     setInputType(inputType === "password" ? "text" : "password");
   };
 
-  const handleLogin = async () => {
+  const handleRegistration = async () => {
     if (!validateEmail(userEmail)) {
       setError("Invalid email");
     } else if (!validatePassword(userPassword)) {
       setError("Password must be at least 8 characters long");
+    } else if (userPassword !== confirmPassword) {
+      setError("Passwords do not match");
     } else {
       try {
-        const user = await signInWithEmailAndPassword(
+        const user = await createUserWithEmailAndPassword(
           FIREBASE_AUTH,
           userEmail,
           userPassword
         );
 
-        alert("User signed in successfully");
+        alert("User created successfully");
         login(user);
       } catch (error) {
-        setError("Email and password do not match");
+        if (error.code === "auth/email-already-in-use") {
+          setError("Email already in use");
+        } else {
+          setError(error.message);
+        }
       }
     }
   };
@@ -63,12 +74,7 @@ function Login() {
       className="flex flex-col items-center justify-center h-screen"
       style={{ backgroundColor: theme.palette.primary.main }}
     >
-      <div
-        className="p-3 text-xl"
-        style={{ color: theme.palette.primary.text }}
-      >
-        Welcome to Cafe Ordering App
-      </div>
+      <div className="p-3 text-xl">Register account</div>
       <div className="bg-gray-100 shadow-lg rounded-lg p-8 ">
         <div className="flex flex-wrap justify-end mb-2">
           <div>Email:</div>
@@ -90,7 +96,17 @@ function Login() {
           ></input>
         </div>
 
-        <div className="text-red-700  mb-2">{error}</div>
+        <div className="flex flex-wrap justify-end mb-2">
+          <div>Confirm:</div>
+          <input
+            className="border-2 ml-2"
+            type={inputType}
+            value={confirmPassword}
+            onChange={handleConfirm}
+          ></input>
+        </div>
+
+        <div className="text-red-700">{error}</div>
 
         <div className="flex flex-wrap justify-end">
           <input
@@ -100,21 +116,13 @@ function Login() {
           ></input>
           <div>{inputType === "password" ? "Show" : "Hide"} Content</div>
         </div>
-        <div className="flex flex-row justify-evenly mt-5">
-          <button className="border-2 p-2 rounded-xl" onClick={handleLogin}>
-            Login
-          </button>
-        </div>
 
-        <div className="flex justify-between mt-5">
-          <button className="underline" onClick={() => navigate("/register")}>
-            Register new user
-          </button>
+        <div className="flex flex-row justify-evenly mt-5">
           <button
-            className="underline"
-            onClick={() => navigate("/resetPassword")}
+            className="border-2 p-2 rounded-xl"
+            onClick={handleRegistration}
           >
-            Forgot password?
+            Register
           </button>
         </div>
       </div>
