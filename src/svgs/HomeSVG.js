@@ -28,14 +28,14 @@ const HomeSVG = ({ isMenuStyle }) => {
           <g
             id="Page-1"
             stroke="none"
-            stroke-width="1"
+            strokeWidth="1"
             style={{ fill: theme.palette.secondary.main }}
-            fill-rule="evenodd"
+            fillRule="evenodd"
           >
             <g
               id="Dribbble-Light-Preview"
               transform="translate(-419.000000, -720.000000)"
-              style={{ fill: theme.palette.secondary.text }}
+              style={{ fill: theme.palette.secondary.buttonText }}
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path

@@ -19,7 +19,7 @@ const PresentSVG = ({ isMenuStyle }) => {
           style={{
             width: isMenuStyle ? "36px" : "40px",
             height: isMenuStyle ? "36px" : "48px",
-            fill: theme.palette.secondary.text,
+            fill: theme.palette.secondary.buttonText,
           }}
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
