@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useTheme } from "@emotion/react";
-import { useNavigate } from "react-router-dom";
 import { FIREBASE_AUTH } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AuthContext } from "../context/authContext";
+import { Helmet } from "react-helmet";
 
 function Login() {
   const theme = useTheme();
-  const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -70,63 +69,68 @@ function Login() {
   };
 
   return (
-    <div
-      className="flex flex-col items-center justify-center h-screen"
-      style={{ backgroundColor: theme.palette.primary.main }}
-    >
-      <div className="p-3 text-xl">Register account</div>
-      <div className="bg-gray-100 shadow-lg rounded-lg p-8 ">
-        <div className="flex flex-wrap justify-end mb-2">
-          <div>Email:</div>
-          <input
-            className="border-2 ml-2"
-            type="text"
-            value={userEmail}
-            onChange={handleEmail}
-          ></input>
-        </div>
+    <>
+      <Helmet>
+        <title>Cafe Ordering App - Register</title>
+      </Helmet>
+      <div
+        className="flex flex-col items-center justify-center h-screen"
+        style={{ backgroundColor: theme.palette.primary.main }}
+      >
+        <div className="p-3 text-xl">Register account</div>
+        <div className="bg-gray-100 shadow-lg rounded-lg p-8 ">
+          <div className="flex flex-wrap justify-end mb-2">
+            <div>Email:</div>
+            <input
+              className="border-2 ml-2"
+              type="text"
+              value={userEmail}
+              onChange={handleEmail}
+            ></input>
+          </div>
 
-        <div className="flex flex-wrap justify-end mb-2">
-          <div>Password:</div>
-          <input
-            className="border-2 ml-2"
-            type={inputType}
-            value={userPassword}
-            onChange={handlePassword}
-          ></input>
-        </div>
+          <div className="flex flex-wrap justify-end mb-2">
+            <div>Password:</div>
+            <input
+              className="border-2 ml-2"
+              type={inputType}
+              value={userPassword}
+              onChange={handlePassword}
+            ></input>
+          </div>
 
-        <div className="flex flex-wrap justify-end mb-2">
-          <div>Confirm:</div>
-          <input
-            className="border-2 ml-2"
-            type={inputType}
-            value={confirmPassword}
-            onChange={handleConfirm}
-          ></input>
-        </div>
+          <div className="flex flex-wrap justify-end mb-2">
+            <div>Confirm:</div>
+            <input
+              className="border-2 ml-2"
+              type={inputType}
+              value={confirmPassword}
+              onChange={handleConfirm}
+            ></input>
+          </div>
 
-        <div className="text-red-700">{error}</div>
+          <div className="text-red-700">{error}</div>
 
-        <div className="flex flex-wrap justify-end">
-          <input
-            className="mr-2"
-            type="checkbox"
-            onClick={toggleInputType}
-          ></input>
-          <div>{inputType === "password" ? "Show" : "Hide"} Content</div>
-        </div>
+          <div className="flex flex-wrap justify-end">
+            <input
+              className="mr-2"
+              type="checkbox"
+              onClick={toggleInputType}
+            ></input>
+            <div>{inputType === "password" ? "Show" : "Hide"} Content</div>
+          </div>
 
-        <div className="flex flex-row justify-evenly mt-5">
-          <button
-            className="border-2 p-2 rounded-xl"
-            onClick={handleRegistration}
-          >
-            Register
-          </button>
+          <div className="flex flex-row justify-evenly mt-5">
+            <button
+              className="border-2 p-2 rounded-xl"
+              onClick={handleRegistration}
+            >
+              Register
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

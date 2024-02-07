@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 
 function Rewards() {
   return (
-    <Layout title="Cafe Loyalty">
+    <Layout title="Cafe Rewards">
       <div>Rewards Page</div>
     </Layout>
   );
