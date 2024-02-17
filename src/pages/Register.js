@@ -77,7 +77,12 @@ function Login() {
         className="flex flex-col items-center justify-center h-screen"
         style={{ backgroundColor: theme.palette.primary.main }}
       >
-        <div className="p-3 text-xl">Register account</div>
+        <div
+          className="p-3 text-xl"
+          style={{ color: theme.palette.primary.text }}
+        >
+          Register account
+        </div>
         <div className="bg-gray-100 shadow-lg rounded-lg p-8 ">
           <div className="flex flex-wrap justify-end mb-2">
             <div>Email:</div>
