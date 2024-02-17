@@ -42,7 +42,12 @@ function ResetPassword() {
         className="flex flex-col items-center justify-center h-screen"
         style={{ backgroundColor: theme.palette.primary.main }}
       >
-        <div className="p-3 text-xl">Reset Password</div>
+        <div
+          className="p-3 text-xl"
+          style={{ color: theme.palette.primary.text }}
+        >
+          Reset Password
+        </div>
         <div className="bg-gray-100 shadow-lg rounded-lg p-8 m-2">
           <div className="flex flex-wrap mb-2">
             <div>Email:</div>

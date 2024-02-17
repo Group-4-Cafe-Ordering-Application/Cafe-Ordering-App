@@ -127,10 +127,13 @@ const Header = () => {
     >
       <Link to="/">
         <div className="flex">
-          <img src={logo} alt="Logo" className="h-24 w-auto pl-1" />{" "}
-          {/* need to adjust height and change the logo to w/o the word */}
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-24 w-auto pl-1 -ml-6 md:ml-0"
+          />{" "}
           <h1
-            className="flex text-2xl items-center -ml-8 text-white"
+            className="flex text-xl md:text-3xl items-center -ml-8 text-white"
             style={{ fontFamily: "Arial" }}
           >
             Cafe Ordering App
