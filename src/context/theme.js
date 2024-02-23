@@ -14,9 +14,9 @@ export const defaultTheme = createTheme({
     },
     secondary: {
       main: "#2E2A26",
-      hover: orange[200],
       text: red[800],
       buttonText: "#C24700",
+      buttonShadow: "#3A352F",
     },
   },
 });
@@ -33,9 +33,9 @@ export const darkTheme = createTheme({
     },
     secondary: {
       main: "#C24700",
-      hover: orange[200],
-      text: grey[900],
+      text: grey[200],
       buttonText: "#000",
+      buttonShadow: "#666666",
     },
   },
 });

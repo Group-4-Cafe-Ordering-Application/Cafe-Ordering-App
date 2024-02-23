@@ -7,22 +7,25 @@ import SettingsMenu from "./SettingsMenu";
 import HomeSVG from "../svgs/HomeSVG";
 import CartSVG from "../svgs/CartSVG";
 import MenuBurger from "../svgs/MenuBurger";
-import ProfileSVG from "../svgs/ProfileSVG";
+import LogoutSVG from "../svgs/LogoutSVG";
 import BrushSVG from "../svgs/BrushSVG";
 import PresentSVG from "../svgs/PresentSVG";
 
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import { AuthContext } from "../context/authContext";
 import React, {
   useCallback,
   useEffect,
   useState,
+  useContext,
   useMemo,
   useRef,
 } from "react";
 
 const Header = () => {
   const theme = useTheme();
+  const { logout } = useContext(AuthContext);
 
   function Navbar(props) {
     return (
@@ -50,14 +53,18 @@ const Header = () => {
       };
     }, []);
 
+    const handleClick = (e) => {
+      if (props.onClick) {
+        e.preventDefault();
+        props.onClick();
+      }
+      setOpen(!open);
+    };
+
     return (
       <div ref={nodeRef}>
         <li className="nav-item">
-          <a
-            href={props.href}
-            className="icon-button"
-            onClick={() => setOpen(!open)}
-          >
+          <a href={props.href} className="icon-button" onClick={handleClick}>
             {props.icon}
           </a>
           {open && props.children}
@@ -82,11 +89,11 @@ const Header = () => {
       <Navbar>
         <NavItem href="/" text="Home" icon={<HomeSVG />} />
         <NavItem href="/cart" text="Cart" icon={<CartSVG />} />
-        <NavItem href="/profile" text="Profile" icon={<ProfileSVG />} />
         <NavItem href="/rewards" text="Rewards" icon={<PresentSVG />} />
         <NavItem href="#" text="Theme" icon={<BrushSVG />}>
           <SettingsMenu />
         </NavItem>
+        <NavItem href="#" text="Logout" icon={<LogoutSVG />} onClick={logout} />
       </Navbar>
     ),
     []

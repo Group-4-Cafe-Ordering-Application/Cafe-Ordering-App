@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import Cart from "./pages/Cart";
-import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Rewards from "./pages/Rewards";
 import NoPage from "./pages/NoPage";
@@ -20,7 +19,6 @@ const ProtectedRoutes = () => {
         <>
           <Route path="/" element={<MainPage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/rewards" element={<Rewards />} />
           <Route path="*" element={<NoPage />} />
         </>
