@@ -1,16 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LogoutIcon from "@mui/icons-material/Logout";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
+import { AuthContext } from "../context/authContext";
 import { useThemeContext } from "../context/themeContext";
 
 function MobileMenu() {
   const theme = useTheme();
   const { setTheme } = useThemeContext();
+  const { logout } = useContext(AuthContext);
   const primaryColor = theme.palette.primary.main;
   const secondaryColor = theme.palette.secondary.main;
   const StyledDropdownItem = styled.a`
@@ -47,14 +50,24 @@ function MobileMenu() {
   ));
 
   function DropdownItem(props) {
+    const { onClick } = props;
+
+    const handleClick = () => {
+      if (props.goToMenu) {
+        setActiveMenu(props.goToMenu);
+      }
+      if (props.themeName) {
+        handleThemeChange(props.themeName);
+      }
+      if (onClick) {
+        onClick();
+      }
+    };
     return (
       <StyledDropdownItem
         href={props.href}
         className="menu-item"
-        onClick={() => {
-          props.goToMenu && setActiveMenu(props.goToMenu);
-          props.themeName && handleThemeChange(props.themeName);
-        }}
+        onClick={handleClick}
       >
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
@@ -90,6 +103,9 @@ function MobileMenu() {
             goToMenu="theme"
           >
             Theme
+          </DropdownItem>
+          <DropdownItem href="#" onClick={logout} rightIcon={<LogoutIcon />}>
+            Logout
           </DropdownItem>
         </div>
       </ForwardedCSSTransition>
