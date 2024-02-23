@@ -1,10 +1,16 @@
 import { useTheme } from "@emotion/react";
+import { useState } from "react";
 
 const PresentSVG = ({ isMenuStyle }) => {
   const theme = useTheme();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="popup-container flex items-evenly">
+    <div
+      className="popup-container flex items-evenly"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {isMenuStyle ? null : <div className="popup-content">Rewards</div>}
       <div
         className="flex rounded-xl justify-center"
@@ -12,6 +18,9 @@ const PresentSVG = ({ isMenuStyle }) => {
           backgroundColor: theme.palette.secondary.main,
           height: isMenuStyle ? "36px" : "48px",
           width: isMenuStyle ? "36px" : "48px",
+          boxShadow: isHovered
+            ? "1px 1px 4px 4px " + theme.palette.secondary.buttonShadow
+            : null,
         }}
       >
         <svg
