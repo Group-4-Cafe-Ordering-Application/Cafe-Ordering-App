@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { Helmet } from "react-helmet";
 import { Container } from "@mui/material";
-import "./Loading.css";
 import { useTheme } from "@emotion/react";
+import "./Loading.css";
 import "../index.css";
 
-const Layout = ({ title, header, footer, children }) => {
+const Layout = ({ title, header, children }) => {
   const theme = useTheme();
   const [isLoading, setIsLoading] = useState(true);
 
-  // This useEffect will run once when the component mounts
   useEffect(() => {
     // Simulate some delay for demonstration purposes
     const loadingTimeout = setTimeout(() => {
