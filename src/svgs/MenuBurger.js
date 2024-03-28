@@ -9,15 +9,15 @@ function MenuBurger() {
         className="flex rounded-xl justify-center"
         style={{
           backgroundColor: theme.palette.secondary.main,
-          height: "48px",
-          width: "48px",
+          height: "40px",
+          width: "40px",
         }}
       >
         <svg
           className=" m-auto"
-          width="800px"
-          height="800px"
           viewBox="0 0 24 24"
+          height="24px"
+          width="24px"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
