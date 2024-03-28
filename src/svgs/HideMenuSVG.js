@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 
-function MenuBurger() {
+function HideMenuSVG() {
   const theme = useTheme();
 
   return (
@@ -15,22 +15,30 @@ function MenuBurger() {
       >
         <svg
           className=" m-auto"
-          viewBox="0 0 24 24"
+          viewBox="-3 0 19 19"
           height="24px"
           width="24px"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6ZM3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12ZM3 18C3 17.4477 3.44772 17 4 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H4C3.44772 19 3 18.5523 3 18Z"
+            d="M12.711 9.182a1.03 1.03 0 0 1-1.03 1.03H1.319a1.03 1.03 0 1 1 0-2.059h10.364a1.03 1.03 0 0 1 1.029 1.03z"
             fill={theme.palette.secondary.buttonText}
           />
         </svg>
+        {/* <svg
+          fill="#000000"
+          width="800px"
+          height="800px"
+          viewBox="-3 0 19 19"
+          xmlns="http://www.w3.org/2000/svg"
+          class="cf-icon-svg"
+        >
+          <path d="M12.711 9.182a1.03 1.03 0 0 1-1.03 1.03H1.319a1.03 1.03 0 1 1 0-2.059h10.364a1.03 1.03 0 0 1 1.029 1.03z" />
+        </svg> */}
       </div>
     </div>
   );
 }
 
-export default MenuBurger;
+export default HideMenuSVG;

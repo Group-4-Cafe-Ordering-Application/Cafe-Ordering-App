@@ -16,6 +16,7 @@ function SettingsMenu() {
   const StyledDropdownItem = styled.a`
     border-color: ${primaryColor};
     background-color: ${secondaryColor};
+    cursor: pointer;
     &:hover {
       background-color: ${primaryColor};
     }
@@ -50,13 +51,12 @@ function SettingsMenu() {
     >
       <div className="menu">
         <DropdownItem
-          href="#"
           themeName="default"
           leftIcon={<Brightness4Icon className=" rotate-180" />}
         >
           Default Theme
         </DropdownItem>
-        <DropdownItem href="#" themeName="dark" leftIcon={<DarkModeIcon />}>
+        <DropdownItem themeName="dark" leftIcon={<DarkModeIcon />}>
           Dark Theme
         </DropdownItem>
       </div>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CustomThemeProvider } from "./context/themeContext";
 import { AuthProvider, AuthContext } from "./context/authContext";
+import { CartProvider } from "./context/cartContext";
 import React, { useContext } from "react";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
@@ -37,11 +38,13 @@ function App() {
   return (
     <CustomThemeProvider>
       <Router>
-        <AuthProvider>
-          <Routes>
-            <Route path="/*" element={<ProtectedRoutes />} />
-          </Routes>
-        </AuthProvider>
+        <CartProvider>
+          <AuthProvider>
+            <Routes>
+              <Route path="/*" element={<ProtectedRoutes />} />
+            </Routes>
+          </AuthProvider>
+        </CartProvider>
       </Router>
     </CustomThemeProvider>
   );

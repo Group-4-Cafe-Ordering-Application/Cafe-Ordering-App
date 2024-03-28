@@ -19,6 +19,7 @@ function MobileMenu() {
   const StyledDropdownItem = styled.a`
     border-color: ${primaryColor};
     background-color: ${secondaryColor};
+    cursor: pointer;
     &:hover {
       color: ${secondaryColor};
       font-weight: bolder;
@@ -95,16 +96,11 @@ function MobileMenu() {
         <div className="menu">
           <DropdownItem href="/">Home</DropdownItem>
           <DropdownItem href="/Cart">Cart</DropdownItem>
-          <DropdownItem href="/profile">Profile</DropdownItem>
           <DropdownItem href="/rewards">Rewards</DropdownItem>
-          <DropdownItem
-            href="#"
-            rightIcon={<ArrowForwardIcon />}
-            goToMenu="theme"
-          >
+          <DropdownItem rightIcon={<ArrowForwardIcon />} goToMenu="theme">
             Theme
           </DropdownItem>
-          <DropdownItem href="#" onClick={logout} rightIcon={<LogoutIcon />}>
+          <DropdownItem onClick={logout} rightIcon={<LogoutIcon />}>
             Logout
           </DropdownItem>
         </div>
@@ -120,19 +116,17 @@ function MobileMenu() {
         <div className="menu">
           <DropdownItem
             leftIcon={<ArrowBackIcon />}
-            href="#"
             goToMenu="main"
           ></DropdownItem>
 
           <DropdownItem
-            href="#"
             themeName="default"
             leftIcon={<Brightness4Icon className=" rotate-180" />}
           >
             Default Theme
           </DropdownItem>
 
-          <DropdownItem href="#" themeName="dark" leftIcon={<DarkModeIcon />}>
+          <DropdownItem themeName="dark" leftIcon={<DarkModeIcon />}>
             Dark Theme
           </DropdownItem>
         </div>
