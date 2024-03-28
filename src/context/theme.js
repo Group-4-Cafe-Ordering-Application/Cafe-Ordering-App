@@ -5,18 +5,18 @@ export const defaultTheme = createTheme({
   palette: {
     type: "default",
     backgroundColor: grey[300],
-    textColor: "#000",
     shadowColor: "shadow-gray-500",
     primary: {
-      main: grey[700],
+      main: "#616161", // dark-grey
       light: grey[400],
       text: "#000",
+      buttonShadow: "#9E9E9E", // light-grey,
     },
     secondary: {
-      main: "#2E2A26",
-      text: red[800],
-      buttonText: "#C24700",
-      buttonShadow: "#3A352F",
+      main: "#2E2A26", // brown
+      text: "#000",
+      buttonText: "#C24700", // orange
+      buttonShadow: "#3A352F", // lighter-brown
     },
   },
 });
