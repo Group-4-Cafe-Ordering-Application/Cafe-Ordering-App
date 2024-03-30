@@ -8,7 +8,6 @@ export const CartProvider = ({ children }) => {
     const savedCart = Cookies.get("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const savedCart = Cookies.get("cart");
 
   useEffect(() => {
     console.log(cart);
@@ -65,11 +64,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const getSubtotal = () => {
-    let subtotal = 0;
-    cart.map((item, index) => {
-      subtotal += item.price * item.quantity;
-    });
-    return subtotal;
+    return cart.reduce((subtotal, item) => {
+      return subtotal + item.price * item.quantity;
+    }, 0);
   };
 
   return (

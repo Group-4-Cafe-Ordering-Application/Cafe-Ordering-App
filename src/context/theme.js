@@ -1,4 +1,4 @@
-import { grey, orange, red } from "@mui/material/colors";
+import { grey, orange } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const defaultTheme = createTheme({
