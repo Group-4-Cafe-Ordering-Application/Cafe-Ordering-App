@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import Rewards from "./pages/Rewards";
 import NoPage from "./pages/NoPage";
 import ResetPassword from "./pages/ResetPassword";
+import Checkout from "./pages/Checkout";
+import OrderConfirm from "./pages/OrderConfirm";
 
 const ProtectedRoutes = () => {
   const { userToken } = useContext(AuthContext);
@@ -21,6 +23,8 @@ const ProtectedRoutes = () => {
           <Route path="/" element={<MainPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/rewards" element={<Rewards />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orderConfirm" element={<OrderConfirm />} />
           <Route path="*" element={<NoPage />} />
         </>
       ) : (

@@ -10,7 +10,6 @@ export const CartProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    console.log(cart);
     Cookies.set("cart", JSON.stringify(cart), { expires: 7 });
   });
 
@@ -56,7 +55,6 @@ export const CartProvider = ({ children }) => {
         return currentCart.filter((_, index) => index !== existingItemIndex);
       }
     });
-    console.log(cart);
   };
 
   const clearCart = () => {
@@ -69,9 +67,25 @@ export const CartProvider = ({ children }) => {
     }, 0);
   };
 
+  const getTax = () => {
+    return getSubtotal() * 0.0475;
+  };
+
+  const getTotal = () => {
+    return getSubtotal() + getTax();
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, getSubtotal }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        getSubtotal,
+        getTax,
+        getTotal,
+      }}
     >
       {children}
     </CartContext.Provider>
