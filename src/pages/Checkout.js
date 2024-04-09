@@ -51,7 +51,6 @@ function Checkout() {
   };
 
   const submitOrder = () => {
-    console.log(form);
     const errorMsg = validateInformation();
     if (errorMsg === "") {
       navigate("/orderConfirm");
@@ -139,17 +138,32 @@ function Checkout() {
     if (form.expDate === "") {
       return "Please enter your card expiration date";
     }
-    const expDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const expDateRegex = /^(0[1-9]|1[0-2])\/\d{2}(\d{2})?$/;
     if (!expDateRegex.test(form.expDate)) {
       return "Please enter a valid expiration date in MM/YY format";
     }
     const month = new Date().getMonth() + 1;
-    const year = new Date().getFullYear().toString().slice(-2);
-    const formMonth = form.expDate.split("/")[0];
-    const formYear = form.expDate.split("/")[1];
-    if (formYear < year || (formMonth < month && formYear === year)) {
-      return "Expiration date cannot be in the past";
+    const year = parseInt(new Date().getFullYear());
+    const yearLastTwo = parseInt(new Date().getFullYear().toString().slice(-2));
+    const formMonth = parseInt(form.expDate.split("/")[0]);
+    const formYear = parseInt(form.expDate.split("/")[1]);
+
+    if (formYear.toString().length <= 2) {
+      if (formYear > yearLastTwo + 5) {
+        return "Please enter expiration data in MM/YYYY format";
+      }
+      if (
+        formYear < yearLastTwo ||
+        (formMonth < month && formYear === yearLastTwo)
+      ) {
+        return "Expiration date cannot be in the past";
+      }
+    } else {
+      if (formYear < year || (formMonth < month && formYear === year)) {
+        return "Expiration date cannot be in the past";
+      }
     }
+
     if (form.cvc === "") {
       return "Please enter your card CVC";
     }

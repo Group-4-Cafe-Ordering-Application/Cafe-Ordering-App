@@ -42,7 +42,7 @@ const Carryout = ({ form, handleFormChange, submitOrder, errorMessage }) => {
           ></input>
         </div>
       </fieldset>
-      <PaymentInfo handleFormChange={handleFormChange} />
+      <PaymentInfo form={form} handleFormChange={handleFormChange} />
       <CartTotalInfo page="checkout" errorMessage={errorMessage} />
     </form>
   );

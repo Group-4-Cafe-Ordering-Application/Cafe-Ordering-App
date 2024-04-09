@@ -5,12 +5,20 @@ import Layout from "../components/Layout";
 
 function MainPage() {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategoryID, setSelectedCategoryID] = useState(1);
 
   return (
     <Layout title="Cafe Home Page">
       <div className="flex flex-row justify-between md:-ml-6 mt-2">
-        <MenuList setSelectedCategory={setSelectedCategory} />
-        <ItemsDisplay category={selectedCategory} />
+        <MenuList
+          setSelectedCategory={setSelectedCategory}
+          setSelectedCategoryID={setSelectedCategoryID}
+          selectedCategoryID={selectedCategoryID}
+        />
+        <ItemsDisplay
+          category={selectedCategory}
+          categoryID={selectedCategoryID}
+        />
       </div>
     </Layout>
   );

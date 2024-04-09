@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 
-function PaymentInfo({ handleFormChange }) {
+function PaymentInfo({ form, handleFormChange }) {
   const theme = useTheme();
 
   return (
@@ -19,15 +19,17 @@ function PaymentInfo({ handleFormChange }) {
           className="w-48"
           type="text"
           name="cardNumber"
+          value={form.cardNumber}
           onChange={handleFormChange}
         ></input>
       </div>
       <div className="styled-div">
         <label>Exp Date:</label>
         <input
-          className="w-16"
+          className="w-20"
           type="text"
           name="expDate"
+          value={form.expDate}
           placeholder="mm/yy"
           onChange={handleFormChange}
         ></input>
@@ -38,6 +40,7 @@ function PaymentInfo({ handleFormChange }) {
           className="w-12"
           type="text"
           name="cvc"
+          value={form.cvc}
           onChange={handleFormChange}
         ></input>
       </div>

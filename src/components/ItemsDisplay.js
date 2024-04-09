@@ -1,51 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
+import axios from "axios";
+import { useTheme } from "@emotion/react";
 
-function ItemsDisplay({ category }) {
-  // Temporary data for testing
-  // Should fetch from API in real app
-  const itemsByCategory = {
-    Drinks: [
-      {
-        id: 1,
-        name: "Coffee",
-        price: 2.99,
-        description: "Fresh brewed coffee",
-      },
-      { id: 2, name: "Tea", price: 2.5, description: "Selection of hot teas" },
-      { id: 3, name: "Soda", price: 3.99, description: "Soft drinks" },
-    ],
-    Food: [
-      { id: 4, name: "Bread", price: 4.99, description: "Artisan breads" },
-      { id: 5, name: "Pizza", price: 7.99, description: "Pepperonni pizza" },
-      {
-        id: 6,
-        name: "Sandwich",
-        price: 5.99,
-        description: "Ham and cheese sandwich",
-      },
-      {
-        id: 7,
-        name: "Bacon, Sausage & Egg Wrap",
-        price: 6.99,
-        description: "Bacon, sausage, egg and cheese wrap",
-      },
-    ],
-  };
+function ItemsDisplay({ category, categoryID }) {
+  const [items, setItems] = useState([]);
+  const theme = useTheme();
 
-  const items = itemsByCategory[category] || [];
+  useEffect(() => {
+    const fetchData = async () => {
+      const categoryIdString = categoryID.toString();
+      try {
+        const response = await axios.post("http://localhost:5000/menu", {
+          categoryID: categoryIdString,
+        });
+        setItems(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the menu items:", error);
+      }
+    };
 
-  return (
-    <div className="flex flex-row flex-wrap gap-4 justify-between mx-auto">
+    fetchData();
+  }, [category]);
+
+  return items.length !== 0 ? (
+    <div className="flex flex-row flex-wrap justify-evenly w-full">
       {items.map((item) => (
         <MenuItem
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          description={item.description}
+          key={item.item_id}
+          id={item.item_id}
+          category={item.category_id}
+          name={item.item}
+          price={item.item_cost}
+          size={item.item_size}
+          description={item.Description}
         />
       ))}
+    </div>
+  ) : (
+    <div
+      className="flex text-center justify-center items-center w-full text-lg"
+      style={{ color: theme.palette.primary.text }}
+    >
+      Error loading Menu
     </div>
   );
 }
