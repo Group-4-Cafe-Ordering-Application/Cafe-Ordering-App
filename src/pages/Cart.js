@@ -32,7 +32,7 @@ function Cart() {
 
               {/* Display item total price */}
               <div className="flex items-center justify-end p-2 text-lg text-wrap w-1/4 sm:w-1/5">
-                {item.price * item.quantity}
+                {(item.price * item.quantity).toFixed(2)}
               </div>
 
               <div className="flex flex-row items-center justify-end sm:justify-start w-1/2 sm:w-2/5">
