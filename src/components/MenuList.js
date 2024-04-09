@@ -1,35 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import MenuBurger from "../svgs/MenuBurger";
 import HideMenuSVG from "../svgs/HideMenuSVG";
+import axios from "axios";
 
-function MenuList({ setSelectedCategory }) {
+function MenuList({
+  setSelectedCategory,
+  setSelectedCategoryID,
+  selectedCategoryID,
+}) {
   const theme = useTheme();
   const primaryColor = theme.palette.primary.main;
   const secondaryColor = theme.palette.secondary.main;
-
-  const categories = ["Drinks", "Food"];
-
+  const primaryTextColor = theme.palette.primary.text;
   const [menuToggle, setMenuToggle] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await axios.post("http://localhost:5000/category");
+        setCategories(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the menu items:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const StyledListItem = styled.li`
     border-color: ${primaryColor};
-    background-color: ${secondaryColor};
+    background-color: ${(props) =>
+      props.isSelected ? secondaryColor : primaryColor};
+    color: ${(props) => (props.isSelected ? primaryColor : primaryTextColor)};
+    font-weight: ${(props) => (props.isSelected ? "bolder" : "normal")};
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
     width: 6rem;
     @media (min-width: 768px) {
       width: 10rem;
     }
     cursor: pointer;
     &:hover {
-      color: ${secondaryColor};
+      color: ${primaryColor};
       font-weight: bolder;
-      background-color: ${primaryColor};
+      background-color: ${secondaryColor};
       fill: ${secondaryColor};
     }
   `;
@@ -37,6 +57,11 @@ function MenuList({ setSelectedCategory }) {
   function handleToggle() {
     setMenuToggle(!menuToggle);
   }
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setSelectedCategoryID(category.category_id);
+  };
 
   return menuToggle ? (
     <div className="h-screen w-12">
@@ -50,12 +75,13 @@ function MenuList({ setSelectedCategory }) {
         <HideMenuSVG />
       </button>
       <ul>
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <StyledListItem
-            key={index}
-            onClick={() => setSelectedCategory(category)}
+            key={category.category_id}
+            isSelected={category.category_id === selectedCategoryID}
+            onClick={() => handleCategoryChange(category)}
           >
-            {category}
+            {category.sub_category}
           </StyledListItem>
         ))}
       </ul>
