@@ -66,7 +66,7 @@ function MenuList({
   };
 
   return menuToggle ? (
-    <div className="h-screen w-12">
+    <div className="w-12">
       <button onClick={handleToggle}>
         <MenuBurger />
       </button>
