@@ -82,7 +82,27 @@ function Checkout() {
       // Fail-safe if fetching user information fails
       setForm({
         ...form,
-        billing: { ...form.billing, cardNumber: "", expDate: "", cvc: "" },
+        firstname: "",
+        lastname: "",
+        phoneNumber: "",
+        email: userEmail,
+        delivery: {
+          ...form.delivery,
+          address: "",
+          city: "",
+          zipCode: "",
+          state: "",
+        },
+        billing: {
+          ...form.billing,
+          address: "",
+          city: "",
+          zipCode: "",
+          state: "",
+          cardNumber: "",
+          expDate: "",
+          cvc: "",
+        },
       });
     }
   };
@@ -174,7 +194,7 @@ function Checkout() {
     if (address.address === "") {
       return `Please enter your ${type} address`;
     }
-    const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
+    const addressRegex = /^[a-zA-Z0-9\s,'\-\.]*$/;
     if (!addressRegex.test(address.address)) {
       return `Please enter a valid ${type} address`;
     }
