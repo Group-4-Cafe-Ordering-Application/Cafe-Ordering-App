@@ -64,7 +64,12 @@ const Header = () => {
     return (
       <div ref={nodeRef}>
         <li className="nav-item">
-          <a href={props.href} className="icon-button" onClick={handleClick}>
+          <a
+            href={props.href}
+            className="icon-button"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          >
             {props.icon}
           </a>
           {open && props.children}
@@ -76,7 +81,7 @@ const Header = () => {
   const small = useMemo(
     () => (
       <Navbar>
-        <NavItem href="#" icon={<MenuBurger />}>
+        <NavItem icon={<MenuBurger />}>
           <MobileMenu />
         </NavItem>
       </Navbar>
@@ -90,10 +95,10 @@ const Header = () => {
         <NavItem href="/" text="Home" icon={<HomeSVG />} />
         <NavItem href="/cart" text="Cart" icon={<CartSVG />} />
         <NavItem href="/rewards" text="Rewards" icon={<PresentSVG />} />
-        <NavItem href="#" text="Theme" icon={<BrushSVG />}>
+        <NavItem text="Theme" icon={<BrushSVG />}>
           <SettingsMenu />
         </NavItem>
-        <NavItem href="#" text="Logout" icon={<LogoutSVG />} onClick={logout} />
+        <NavItem text="Logout" icon={<LogoutSVG />} onClick={logout} />
       </Navbar>
     ),
     []

@@ -20,7 +20,9 @@ function MenuList({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response = await axios.post("http://localhost:5000/category");
+        let response = await axios.post(
+          "https://cafe-app-api-7aztvwb6hq-uc.a.run.app/category"
+        );
         setCategories(response.data);
       } catch (error) {
         console.error("There was an error fetching the menu items:", error);
