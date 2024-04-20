@@ -22,21 +22,35 @@ const Carryout = ({ form, handleFormChange, submitOrder, errorMessage }) => {
       <fieldset style={fieldsetStyle}>
         <div className="styled-h1">Customer Information</div>
         <div className="styled-div">
-          <label>Name:</label>
+          <label htmlFor="firstname">First Name:</label>
           <input
+            id="firstname"
             type="text"
-            name="name"
-            placeholder="John Doe"
-            value={form.name}
+            name="firstname"
+            placeholder="John"
+            value={form.firstname}
             onChange={handleFormChange}
           ></input>
         </div>
         <div className="styled-div">
-          <label>Phone:</label>
+          <label htmlFor="lastname">Last Name:</label>
           <input
+            id="lastname"
             type="text"
+            name="lastname"
+            placeholder="Doe"
+            value={form.lastname}
+            onChange={handleFormChange}
+          ></input>
+        </div>
+        <div className="styled-div">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            id="phone"
+            type="tel"
             name="phoneNumber"
             placeholder="123-456-7890"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             value={form.phoneNumber}
             onChange={handleFormChange}
           ></input>

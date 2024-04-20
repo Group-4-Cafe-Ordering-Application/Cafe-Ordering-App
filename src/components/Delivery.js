@@ -4,23 +4,13 @@ import CartTotalInfo from "./CartTotalInfo";
 import { useTheme } from "@emotion/react";
 import StateDropdown from "./StateDropdown";
 
-const Delivery = ({
-  form,
-  setForm,
-  handleFormChange,
-  submitOrder,
-  errorMessage,
-}) => {
+const Delivery = ({ form, handleFormChange, submitOrder, errorMessage }) => {
   const theme = useTheme();
 
   const fieldsetStyle = {
     backgroundColor: theme.palette.primary.main,
     borderColor: theme.palette.secondary.main,
     color: theme.palette.primary.text,
-  };
-
-  const handleStateChange = (state) => {
-    setForm((prevForm) => ({ ...prevForm, state: state }));
   };
 
   const handleSubmit = (e) => {
@@ -33,46 +23,79 @@ const Delivery = ({
       <fieldset style={fieldsetStyle}>
         <div className="styled-h1">Customer Information</div>
         <div className="styled-div">
-          <label>Name:</label>
+          <label htmlFor="firstname">First Name:</label>
           <input
+            id="firstname"
             type="text"
-            name="name"
-            placeholder="John Doe"
-            value={form.name}
+            name="firstname"
+            placeholder="John"
+            value={form.firstname}
             onChange={handleFormChange}
           ></input>
         </div>
         <div className="styled-div">
-          <label>Phone:</label>
+          <label htmlFor="lastname">Last Name:</label>
           <input
+            id="lastname"
             type="text"
+            name="lastname"
+            placeholder="Doe"
+            value={form.lastname}
+            onChange={handleFormChange}
+          ></input>
+        </div>
+        <div className="styled-div">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            id="phone"
+            type="tel"
             name="phoneNumber"
             placeholder="123-456-7890"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             value={form.phoneNumber}
             onChange={handleFormChange}
           ></input>
         </div>
         <div className="styled-div">
-          <label>Address:</label>
-          <input type="text" name="address" onChange={handleFormChange}></input>
-        </div>
-        <div className="styled-div">
-          <label>City:</label>
-          <input type="text" name="city" onChange={handleFormChange}></input>
-        </div>
-        <div className="styled-div">
-          <label>Zip Code:</label>
+          <label htmlFor="delivery-address">Address:</label>
           <input
+            id="delivery-address"
+            type="text"
+            name="address"
+            placeholder="1234 Main St"
+            value={form.delivery.address}
+            onChange={(e) => handleFormChange(e, "delivery")}
+            autoComplete="street-address"
+          ></input>
+        </div>
+        <div className="styled-div">
+          <label htmlFor="delivery-city">City:</label>
+          <input
+            id="delivery-city"
+            type="text"
+            name="city"
+            placeholder="Raleigh"
+            value={form.delivery.city}
+            onChange={(e) => handleFormChange(e, "delivery")}
+          ></input>
+        </div>
+        <div className="styled-div">
+          <label htmlFor="delivery-zip">Zip Code:</label>
+          <input
+            id="delivery-zip"
             className="w-28"
             type="text"
             name="zipCode"
-            onChange={handleFormChange}
+            placeholder="27603"
+            value={form.delivery.zipCode}
+            onChange={(e) => handleFormChange(e, "delivery")}
           ></input>
         </div>
         <div className="styled-div">
           <StateDropdown
-            onStateChange={handleStateChange}
-            selectedState={form.state}
+            id="delivery-state"
+            handleFormChange={(e) => handleFormChange(e, "delivery")}
+            selectedState={form.delivery.state}
           />
         </div>
       </fieldset>
