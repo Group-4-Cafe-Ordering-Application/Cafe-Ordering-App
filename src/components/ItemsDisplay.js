@@ -5,25 +5,34 @@ import { useTheme } from "@emotion/react";
 
 function ItemsDisplay({ category, categoryID }) {
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(false);
   const theme = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
       const categoryIdString = categoryID.toString();
       try {
-        const response = await axios.post("http://localhost:5000/menu", {
-          categoryID: categoryIdString,
-        });
+        const response = await axios.post(
+          "https://cafe-app-api-7aztvwb6hq-uc.a.run.app/menu",
+          {
+            categoryID: categoryIdString,
+          }
+        );
         setItems(response.data);
       } catch (error) {
         console.error("There was an error fetching the menu items:", error);
+        setError(true);
       }
     };
 
     fetchData();
-  }, [category]);
+  }, [category, categoryID]);
 
-  return items.length !== 0 ? (
+  return error ? (
+    <div className="flex text-center justify-center w-full">
+      Error Loading Database
+    </div>
+  ) : items.length !== 0 ? (
     <div className="flex flex-row flex-wrap justify-evenly w-full">
       {items.map((item) => (
         <MenuItem
@@ -42,7 +51,7 @@ function ItemsDisplay({ category, categoryID }) {
       className="flex text-center justify-center items-center w-full text-lg"
       style={{ color: theme.palette.primary.text }}
     >
-      Error loading Menu
+      Loading menu items...
     </div>
   );
 }
