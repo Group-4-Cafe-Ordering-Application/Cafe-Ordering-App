@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 
-function StateDropdown({ onStateChange, selectedState }) {
+function StateDropdown({ handleFormChange, selectedState, id }) {
   const theme = useTheme();
   const USStates = [
     "Alabama",
@@ -58,11 +58,12 @@ function StateDropdown({ onStateChange, selectedState }) {
 
   return (
     <div className="styled-div">
-      <label htmlFor="state-select">State:</label>
+      <label htmlFor={id}>State:</label>
       <select
-        id="state-select"
+        id={id}
         value={selectedState}
-        onChange={(e) => onStateChange(e.target.value)}
+        name="state"
+        onChange={handleFormChange}
         style={{ backgroundColor: theme.palette.backgroundColor }}
       >
         <option value="">Select a state</option>
